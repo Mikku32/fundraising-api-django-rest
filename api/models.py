@@ -22,7 +22,7 @@ class Project(models.Model):
     updated_at = models.DateField(auto_now=True)
     account_number = models.CharField(max_length=100)
     upi_id = models.CharField(max_length=100)
-    Images = models.ImageField(upload_to='images')
+    Images = models.ImageField(upload_to='images/')
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
