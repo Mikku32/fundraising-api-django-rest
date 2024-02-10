@@ -17,6 +17,8 @@ class ProjectSerializer(serializers.ModelSerializer):
 
         
 
+        
+
 class DonationSerializer(serializers.ModelSerializer):
     user = UserSerializer()
     project = ProjectSerializer()
