@@ -11,7 +11,7 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
-class project(models.Model):
+class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     target_amount = models.FloatField()
@@ -29,7 +29,7 @@ class project(models.Model):
     def __str__(self):
         return self.title
     
-class donation(models.Model):
+class Donation(models.Model):
     amount = models.FloatField()
     created_at = models.DateField(auto_now_add=True)
     project = models.ForeignKey(project, on_delete=models.CASCADE)
