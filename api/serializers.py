@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from api.models import User, Donation, Project
+from api.models import DonationHistory, User, Donation, Project
 
 
 class UserSerializer(serializers.ModelSerializer):  
@@ -20,3 +20,8 @@ class DonationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Donation
         fields = '__all__'
+
+class DonationHistorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DonationHistory
+        fields = '__all__'        
