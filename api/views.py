@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics
 
 from api.models import Donation,  Project, User
-from api.serializers import DonationSerializer, ProjectSerializer, UserSerializer
+from api.serializers import DonationSerializer, ProjectGetSerializer, ProjectSerializer, UserSerializer
 
 # Create your views here.
 
@@ -18,11 +18,21 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class ProjectList(generics.ListCreateAPIView):
     queryset = Project.objects.all()
-    serializer_class = ProjectSerializer  
+
+    def get_serializer_class(self):
+        if self.request.method in ['GET']:
+            return ProjectGetSerializer
+        else:
+            return ProjectSerializer
+     
 
 class ProjectDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
+    def get_serializer_class(self):
+        if self.request.method in ['GET']:
+            return ProjectGetSerializer
+        else:
+            return ProjectSerializer
 
 
 class DonationList(generics.ListCreateAPIView):

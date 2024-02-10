@@ -9,15 +9,25 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+
+
+
+
 class ProjectSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
+
     class Meta:
         model = Project
         fields = '__all__'
 
-        
+class ProjectGetSerializer(ProjectSerializer):
+    user = UserSerializer()        
+   
 
-        
+
+
+
+
+
 
 class DonationSerializer(serializers.ModelSerializer):
     user = UserSerializer()
