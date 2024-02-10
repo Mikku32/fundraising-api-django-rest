@@ -32,10 +32,19 @@ class Project(models.Model):
 class Donation(models.Model):
     amount = models.FloatField()
     created_at = models.DateField(auto_now_add=True)
-    project = models.ForeignKey(project, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
     def __str__(self):
-        return str(self.amount)    
+        return self.amount  
+    
+class DonationHistory(models.Model):
+    amount = models.FloatField()
+    
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.amount
 
