@@ -21,7 +21,3 @@ class DonationSerializer(serializers.ModelSerializer):
         model = Donation
         fields = '__all__'
 
-class DonationHistorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = DonationHistory
-        fields = '__all__'        

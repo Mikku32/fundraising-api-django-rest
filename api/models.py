@@ -39,12 +39,5 @@ class Donation(models.Model):
     def __str__(self):
         return self.amount  
     
-class DonationHistory(models.Model):
-    amount = models.FloatField()
-    
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.amount
 

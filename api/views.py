@@ -34,10 +34,3 @@ class DonationDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = DonationSerializer
 
 
-class DonationHistoryList(generics.ListCreateAPIView):
-    queryset = DonationHistory.objects.all()
-    serializer_class = DonationHistorySerializer 
-
-class DonationHistoryDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = DonationHistory.objects.all()
-    serializer_class = DonationHistorySerializer         
