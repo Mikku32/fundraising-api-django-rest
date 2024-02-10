@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from api.models import Donation, DonationHistory, Project, User
+from api.models import Donation,  Project, User
 
 # Register your models here.
 
@@ -17,6 +17,3 @@ class ProjectAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(DonationHistory)
-class ProjectAdmin(admin.ModelAdmin):
-    pass

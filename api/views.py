@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import generics
 
-from api.models import Donation, DonationHistory, Project, User
-from api.serializers import DonationHistorySerializer, DonationSerializer, ProjectSerializer, UserSerializer
+from api.models import Donation,  Project, User
+from api.serializers import DonationSerializer, ProjectSerializer, UserSerializer
 
 # Create your views here.
 

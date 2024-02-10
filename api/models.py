@@ -15,7 +15,7 @@ class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     target_amount = models.FloatField()
-    current_amount = models.FloatField()
+    raised_sofar = models.FloatField()
     start_date = models.DateField()
     end_date = models.DateField()
     created_at = models.DateField(auto_now_add=True)
@@ -37,7 +37,7 @@ class Donation(models.Model):
 
 
     def __str__(self):
-        return self.amount  
+        return str( self.amount ) 
     
 
 
