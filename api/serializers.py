@@ -1,14 +1,17 @@
 from rest_framework import serializers
 
-from api.models import  User, Donation, Project
+from api.models import  CustomUser, Donation, Project
 
 
-class UserSerializer(serializers.ModelSerializer):  
+class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = '__all__'
+        model = CustomUser
+        fields = ('email', 'password', 'name')
+        extra_kwargs = {'password': {'write_only': True}}
 
-
+    def create(self, validated_data):
+        user = CustomUser.objects.create(**validated_data)
+        return user
 
 
 
@@ -20,7 +23,7 @@ class ProjectSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ProjectGetSerializer(ProjectSerializer):
-    user = UserSerializer()        
+    user = CustomUserSerializer()        
    
 
 
@@ -35,7 +38,7 @@ class DonationSerializer(serializers.ModelSerializer):
         model = Donation
         fields = '__all__'
 class DonationGetSerializer(DonationSerializer):
-    user = UserSerializer()
+    user = CustomUserSerializer()
     project = ProjectSerializer()
 
 

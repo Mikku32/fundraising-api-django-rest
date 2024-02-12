@@ -1,10 +1,12 @@
 from django.urls import path
 
-from api.views import DonationDetail, DonationList, ProjectDetail, ProjectList, UserDetail, UserList
+from api.views import DonationDetail, DonationList, ProjectDetail, ProjectList, UserLogin, UserRegister
 
 urlpatterns = [
-    path('users/', UserList.as_view()),
-    path('users/<int:pk>/', UserDetail.as_view()),
+    
+    path('register/',UserRegister.as_view(),name='user_register'),
+    path('login/', UserLogin.as_view(), name='user_login'),
+
 
     path('project/', ProjectList.as_view()),
     path('project/<int:pk>/', ProjectDetail.as_view()),

@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from api.models import Donation,  Project, User
+from api.models import Donation,  Project, CustomUser
 
 # Register your models here.
 
-@admin.register(User)
+@admin.register(CustomUser)
 class ProjectAdmin(admin.ModelAdmin):
     pass
 
