@@ -3,7 +3,7 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-
+from django.contrib.auth.hashers import check_password
 
 from api.models import Donation,  Project, CustomUser
 from api.serializers import DonationGetSerializer, DonationSerializer, ProjectGetSerializer, ProjectSerializer, CustomUserSerializer
@@ -36,7 +36,7 @@ class UserLogin(APIView):
 
         user = CustomUser.objects.filter(email=email).first()
 
-        if user is None or not user.check_password(password):
+        if user is None or not check_password(password,user.password):
             return Response({'error': 'Invalid email/password combination'}, status=status.HTTP_400_BAD_REQUEST)
 
         # You can implement JWT token authentication here or any other authentication mechanism
