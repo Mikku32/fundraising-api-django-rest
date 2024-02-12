@@ -23,7 +23,11 @@ class UserRegister(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-   
+class UserList(generics.RetrieveAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserSerializer
+        
+       
 
 
 class UserLogin(APIView):
@@ -43,13 +47,11 @@ class UserLogin(APIView):
 
         serializer = CustomUserSerializer(user)
         return Response(serializer.data)
+
+
+   
+
     
- 
-
-
-
-
-
 
 class ProjectList(generics.ListCreateAPIView):
     queryset = Project.objects.all()
