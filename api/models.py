@@ -15,23 +15,36 @@ class CustomUser(models.Model):
         super().save(*args, **kwargs)
 
     def _str_(self):
-        return self.email
+        return self.name
     
 
 
 
 class Project(models.Model):
+
+
+    CATEGORY_CHOICES = [
+        ('medical', 'Medical'),
+        ('education', 'Education'),
+        ('disaster', 'Disaster'),
+        ('others', 'Others'),
+       
+    ]
+
+
     title = models.CharField(max_length=100)
     description = models.TextField()
     target_amount = models.FloatField()
-    raised_sofar = models.FloatField()
+    # raised_sofar = models.FloatField()
     start_date = models.DateField()
     end_date = models.DateField()
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     account_number = models.CharField(max_length=100)
     upi_id = models.CharField(max_length=100)
-    Images = models.ImageField(upload_to='images/',default='')
+    images = models.ImageField(upload_to='images/',default='')
+    category = models.CharField(max_length=100, choices=CATEGORY_CHOICES)
+
 
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
